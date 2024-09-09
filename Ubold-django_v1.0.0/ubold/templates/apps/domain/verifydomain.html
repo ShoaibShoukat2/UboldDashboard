@@ -1,0 +1,66 @@
+
+
+
+
+
+
+
+{% extends "vertical_base.html" %}
+{% load static i18n %}
+
+{% block head_title %}{% trans "Verify Domain" %}{% endblock head_title %}
+{% block extra_css %}
+<!-- Add any extra CSS here -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
+            <li class="breadcrumb-item"><a href="javascript: void(0);">Domain</a></li>
+            <li class="breadcrumb-item active">Verify Domain</li>
+          </ol>
+        </div>
+        <h4 class="page-title">Verify Domain</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          {% if messages %}
+            <div class="alert alert-info" role="alert">
+              {% for message in messages %}
+                <p>{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="domain_id" class="form-label">Domain ID</label>
+              <input type="text" id="domain_id" name="domain_id" class="form-control" placeholder="Enter domain ID" required />
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary">Verify Domain</button>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+<!-- Add any extra JS here -->
+{% endblock %}
+

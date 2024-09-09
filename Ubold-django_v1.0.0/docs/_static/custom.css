@@ -1,0 +1,7 @@
+body {
+    font-size: 0.9375rem !important;
+}
+
+div.rst-versions > div.rst-other-versions > div.injected > dl:nth-child(4) {
+    display: none;
+}

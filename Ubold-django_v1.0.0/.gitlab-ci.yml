@@ -1,0 +1,67 @@
+stages:
+  - build
+  - deploy
+
+image: docker:27.0.3
+
+services:
+  - name: docker:dind
+    command: ["--tls=false"]
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_TLS_CERTDIR: ""
+
+before_script:
+  - apk update
+  - apk add --no-cache python3 py3-pip build-base libffi-dev openssl-dev cython curl sshpass
+  - python3 -m venv /venv
+  - . /venv/bin/activate
+  - pip install --upgrade pip
+  - curl -SL "https://github.com/docker/compose/releases/download/v2.28.1/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+  - chmod +x /usr/local/bin/docker-compose
+  - docker-compose --version
+  - docker system prune -af
+
+build:
+  stage: build
+  script:
+    - set -e
+    - docker-compose -f docker-compose.yml build
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - |
+      sshpass -p '@987123Ubuntu' ssh -o StrictHostKeyChecking=no root@67.207.91.68 << 'EOF'
+      echo "Checking Docker Compose version on remote server..."
+      if ! command -v docker-compose &> /dev/null
+      then
+          echo "docker-compose could not be found, installing..."
+          curl -SL "https://github.com/docker/compose/releases/download/v2.28.1/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose
+          chmod +x /usr/local/bin/docker-compose
+      fi
+      docker-compose --version
+      
+      echo "Updating codebase..."
+      if [ -d /home/username/aiseoapp1/aiseoapp1 ]; then
+        cd /home/username/aiseoapp1/aiseoapp1
+        git fetch origin
+        git status
+        git pull origin main
+        git log --oneline -n 5
+      else
+        GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone git@gitlab.com:hamzaabialal/aiseoapp1.git /home/username/aiseoapp1/aiseoapp1
+      fi
+      
+      echo "Restarting Docker containers..."
+      cd /home/username/aiseoapp1/aiseoapp1 && docker-compose down && docker-compose up -d
+
+      echo "Checking Docker Compose logs..."
+      docker-compose logs
+      EOF
+  only:
+    - main
+

@@ -1,0 +1,98 @@
+{% extends "vertical_base.html" %}
+{% load static i18n %}
+{% block head_title %}{% trans "Add Domain" %}{% endblock head_title %}
+{% block extra_css %}
+<!-- third party css -->
+<link href="{% static 'libs/quill/quill.core.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'libs/quill/quill.snow.css' %}" rel="stylesheet" type="text/css"/>
+<!-- third party css end -->
+{% endblock %}
+{% block content %}
+<!-- Start Content-->
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item">
+                            <a href="javascript: void(0);">UBold</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript: void(0);">Domain</a>
+                        </li>
+                        <li class="breadcrumb-item active">Add Domain</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Add Domain</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message.text }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="domain" class="form-label">Domain</label>
+                            <input type="text" name="domain" class="form-control" id="domain" placeholder="Enter your domain" required />
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                <span>Submit</span> <i class="mdi mdi-send ms-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                    {% if dns_records %}
+                        <div class="mt-4">
+                            <h5>DNS Records</h5>
+                            <ul>
+                                {% for record in dns_records %}
+                                    <li>
+                                        <strong>Type:</strong> {{ record.type }}<br>
+                                        <strong>Name:</strong> {{ record.name }}<br>
+                                        <strong>Content:</strong> {{ record.content }}<br>
+                                        <strong>TTL:</strong> {{ record.ttl }}<br>
+                                        <strong>MX RECORD:</strong> mx.sendgrid.net priority 10
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <form method="post" action="{% url 'apps:verify-domain' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="domain_id" value="{{ domain_info.id }}">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success waves-effect waves-light">
+                                        <span>Verify Domain</span> <i class="mdi mdi-check ms-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+<!-- container -->
+{% endblock %}
+{% block extra_javascript %}
+<!-- Third party js -->
+<script src="{% static 'libs/quill/quill.min.js' %}"></script>
+<!-- Third party js ends -->
+{% endblock %}

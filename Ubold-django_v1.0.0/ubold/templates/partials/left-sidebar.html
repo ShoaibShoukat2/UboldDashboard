@@ -1,0 +1,862 @@
+{% load static i18n %}
+
+<!-- ========== Left Sidebar Start ========== -->
+<div class="left-side-menu">
+  <div class="h-100" data-simplebar>
+    <!-- User box -->
+    <div class="user-box text-center">
+      <img
+        src="{% static 'images/users/user-1.jpg' %}"
+        alt="user-img"
+        title="Mat Helme"
+        class="rounded-circle avatar-md"
+      />
+      <div class="dropdown">
+        <a
+          href="javascript: void(0);"
+          class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
+          data-bs-toggle="dropdown"
+          >Geneva Kennedy</a
+        >
+        <div class="dropdown-menu user-pro-dropdown">
+          <!-- item-->
+          <a href="javascript:void(0);" class="dropdown-item notify-item">
+            <i class="fe-user me-1"></i>
+            <span>My Account</span>
+          </a>
+
+          <!-- item-->
+          <a href="javascript:void(0);" class="dropdown-item notify-item">
+            <i class="fe-settings me-1"></i>
+            <span>Settings</span>
+          </a>
+
+          <!-- item-->
+          <a href="javascript:void(0);" class="dropdown-item notify-item">
+            <i class="fe-lock me-1"></i>
+            <span>Lock Screen</span>
+          </a>
+
+          <!-- item-->
+          <a href="javascript:void(0);" class="dropdown-item notify-item">
+            <i class="fe-log-out me-1"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </div>
+      <p class="text-muted">Admin Head</p>
+    </div>
+
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+      <ul id="side-menu">
+        <li class="menu-title">Navigation</li>
+
+        <li>
+          <a href="#sidebarDashboards" data-bs-toggle="collapse">
+            <i data-feather="airplay"></i>
+            <span class="badge bg-success rounded-pill float-end">4</span>
+            <span> Dashboards </span>
+          </a>
+          <div class="collapse" id="sidebarDashboards">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'dashboard:index' %}">Dashboard 1</a>
+              </li>
+              <li>
+                <a href="{% url 'dashboard:dashboard-2' %}">Dashboard 2</a>
+              </li>
+              <li>
+                <a href="{% url 'dashboard:dashboard-3' %}">Dashboard 3</a>
+              </li>
+              <li>
+                <a href="{% url 'dashboard:dashboard-4' %}">Dashboard 4</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="menu-title mt-2">Apps</li>
+
+
+
+
+
+
+
+
+
+        <li>
+          <a href="#domain" data-bs-toggle="collapse">
+            <i data-feather="shopping-cart"></i>
+            <span> Domain </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="domain">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:add-domain' %}">Add Domain</a>
+              </li>
+             
+            </ul>
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:recieve-domain' %}">Recieve Mail</a>
+              </li>
+             
+            </ul>
+          </div>
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+      
+
+        <li>
+          <a href="{% url 'apps:calendar' %}">
+            <i data-feather="calendar"></i>
+            <span> Calendar </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'apps:chat' %}">
+            <i data-feather="message-square"></i>
+            <span> Chat </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+            <i data-feather="shopping-cart"></i>
+            <span> Ecommerce </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarEcommerce">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:ecommerce.dashboard' %}">Dashboard</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.products' %}">Products</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.product-detail' %}"
+                  >Product Detail</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.product-edit' %}"
+                  >Add Product</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.customers' %}">Customers</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.orders' %}">Orders</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.order-detail' %}"
+                  >Order Detail</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.sellers' %}">Sellers</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.cart' %}">Shopping Cart</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:ecommerce.checkout' %}">Checkout</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarCrm" data-bs-toggle="collapse">
+            <i data-feather="users"></i>
+            <span> CRM </span>
+            <span class="menu-arrow"></span>
+          </a>
+
+        
+          <div class="collapse" id="sidebarCrm">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:crm.dashboard' %}">Dashboard</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:crm.contacts' %}">Contacts</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:crm.opportunities' %}">Opportunities</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:crm.leads' %}">Leads</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:crm.customers' %}">Customers</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarEmail" data-bs-toggle="collapse">
+            <i data-feather="mail"></i>
+            <span> Email </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarEmail">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:email.inbox' %}">Inbox</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:email.read' %}">Read Email</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:email.compose' %}">Compose Email</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:email.templates' %}">Email Templates</a>
+              </li>
+
+
+      
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="{% url 'apps:social.feed' %}">
+            <span class="badge bg-pink float-end">Hot</span>
+            <i data-feather="rss"></i>
+            <span> Social Feed </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'apps:companies.companies' %}">
+            <i data-feather="activity"></i>
+            <span> Companies </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#sidebarProjects" data-bs-toggle="collapse">
+            <i data-feather="briefcase"></i>
+            <span> Projects </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarProjects">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:project.list' %}">List</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:project.detail' %}">Detail</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:project.create' %}">Create Project</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarTasks" data-bs-toggle="collapse">
+            <i data-feather="clipboard"></i>
+            <span> Tasks </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarTasks">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:task.list' %}">List</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:task.details' %}">Details</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:task.kanban-board' %}">Kanban Board</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarContacts" data-bs-toggle="collapse">
+            <i data-feather="book"></i>
+            <span> Contacts </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarContacts">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:contacts.list' %}">Members List</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:contacts.profile' %}">Profile</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarTickets" data-bs-toggle="collapse">
+            <i data-feather="aperture"></i>
+            <span> Tickets </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarTickets">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'apps:tickets.list' %}">List</a>
+              </li>
+              <li>
+                <a href="{% url 'apps:tickets.detail' %}">Detail</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="{% url 'apps:manager.file-manager' %}">
+            <i data-feather="folder-plus"></i>
+            <span> File Manager </span>
+          </a>
+        </li>
+
+        <li class="menu-title mt-2">Custom</li>
+
+        <li>
+          <a href="#sidebarAuth" data-bs-toggle="collapse">
+            <i data-feather="file-text"></i>
+            <span> Auth Pages </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarAuth">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'account_login'%}">Log In</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:login-2'%}">Log In 2</a>
+              </li>
+              <li>
+                <a href="{% url 'account_signup'%}">Register</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:register-2'%}">Register 2</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:signin-signup'%}">Signin - Signup</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:signin-signup-2'%}"
+                  >Signin - Signup 2</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'accounts:recoverpw'%}">Recover Password</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:recoverpw-2'%}">Recover Password 2</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:lock-screen'%}">Lock Screen</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:lock-screen-2'%}">Lock Screen 2</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:logout'%}">Logout</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:logout-2'%}">Logout 2</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:confirm-email'%}">Confirm Mail</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts:confirm-email-2'%}">Confirm Mail 2</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarExpages" data-bs-toggle="collapse">
+            <i data-feather="package"></i>
+            <span> Extra Pages </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarExpages">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'pages:starter'%}">Starter</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:timeline'%}">Timeline</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:sitemap'%}">Sitemap</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:invoice'%}">Invoice</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:faqs'%}">FAQs</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:search-results'%}">Search Results</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:pricing'%}">Pricing</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:maintenance'%}">Maintenance</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:coming-soon'%}">Coming Soon</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:gallery'%}">Gallery</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:404'%}">Error 404</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:404-two'%}">Error 404 Two</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:404-alt'%}">Error 404-alt</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:500'%}">Error 500</a>
+              </li>
+              <li>
+                <a href="{% url 'pages:500-two'%}">Error 500 Two</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarLayouts" data-bs-toggle="collapse">
+            <i data-feather="layout"></i>
+            <span class="badge bg-blue float-end">New</span>
+            <span> Layouts </span>
+          </a>
+          <div class="collapse" id="sidebarLayouts">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'layouts:layouts.horizontal'%}">Horizontal</a>
+              </li>
+              <li>
+                <a href="{% url 'layouts:layouts.detached'%}">Detached</a>
+              </li>
+              <li>
+                <a href="{% url 'layouts:layouts.two_column_layouts'%}"
+                  >Two Column Menu</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'layouts:layouts.two_tone_icons_layouts'%}"
+                  >Two Tones Icons</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'layouts:layouts.preloader_layouts'%}">Preloader</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="menu-title mt-2">Components</li>
+
+        <li>
+          <a href="#sidebarBaseui" data-bs-toggle="collapse">
+            <i data-feather="pocket"></i>
+            <span> Base UI </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarBaseui">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'components:components.base_ui.buttons'%}"
+                  >Buttons</a
+                >
+              </li>
+
+
+
+              <li>
+                <a href="{% url 'components:components.base_ui.cards'%}"
+                  >Cards</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.avatars'%}"
+                  >Avatars</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.portlets'%}"
+                  >Portlets</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'components:components.base_ui.tabs-accordions'%}"
+                  >Tabs & Accordions</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.modals'%}">Modals</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.progress'%}">Progress</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.notifications'%}">Notifications</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.offcanvas'%}">Offcanvas</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.spinners'%}">Spinners</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.images'%}">Images</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.carousel'%}">Carousel</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.list-group'%}">List Group</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.video'%}">Embed Video</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.dropdowns'%}">Dropdowns</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.ribbons'%}">Ribbons</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.tooltips-popovers'%}">Tooltips & Popovers</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.general'%}">General UI</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.typography'%}">Typography</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.base_ui.grid'%}">Grid</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarExtendedui" data-bs-toggle="collapse">
+            <i data-feather="layers"></i>
+            <span class="badge bg-info float-end">Hot</span>
+            <span> Extended UI </span>
+          </a>
+
+
+
+
+          <div class="collapse" id="sidebarExtendedui">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'components:components.extended.nestable'%}">Nestable List</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.extended.range-slider'%}">Range Slider</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.extended.dragula'%}">Dragula</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.extended.animation'%}">Animation</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.extended.sweet-alert'%}">Sweet Alert</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.extended.tour'%}">Tour Page</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.extended.scrollspy'%}">Scrollspy</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.extended.loading-buttons'%}">Loading Buttons</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="{% url 'components:components.widgets' %}">
+            <i data-feather="gift"></i>
+            <span> Widgets </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#sidebarIcons" data-bs-toggle="collapse">
+            <i data-feather="cpu"></i>
+            <span> Icons </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarIcons">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'components:components.icons.two-tone'%}">Two Tone Icons</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.icons.feather'%}">Feather Icons</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.icons.mdi'%}">Material Design Icons</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.icons.dripicons'%}">Dripicons</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.icons.font-awesome'%}">Font Awesome 5</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.icons.themify'%}">Themify</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.icons.simple-line'%}">Simple Line</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.icons.weather'%}">Weather</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarForms" data-bs-toggle="collapse">
+            <i data-feather="bookmark"></i>
+            <span> Forms </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarForms">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'components:components.forms.elements'%}">General Elements</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.advanced'%}">Advanced</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.validation'%}">Validation</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.pickers'%}">Pickers</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.wizard'%}">Wizard</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.masks'%}">Masks</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.quilljs'%}">Quilljs Editor</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.file-uploads'%}">File Uploads</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.x-editable'%}">X Editable</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.forms.image-crop'%}">Image Crop</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarTables" data-bs-toggle="collapse">
+            <i data-feather="grid"></i>
+            <span> Tables </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarTables">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'components:components.tables.basic'%}">Basic Tables</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.tables.datatables'%}">Data Tables</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.tables.editable'%}">Editable Tables</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.tables.responsive'%}">Responsive Tables</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.tables.footables'%}">FooTable</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.tables.bootstrap'%}">Bootstrap Tables</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.tables.tablesaw'%}">Tablesaw Tables</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.tables.jsgrid'%}">JsGrid Tables</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarCharts" data-bs-toggle="collapse">
+            <i data-feather="bar-chart-2"></i>
+            <span> Charts </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarCharts">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'components:components.charts.apex'%}">Apex Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.flot'%}">Flot Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.morris'%}">Morris Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.chartjs'%}">Chartjs Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.peity'%}">Peity Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.chartist'%}">Chartist Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.c3'%}">C3 Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.sparklines'%}">Sparklines Charts</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.charts.knob'%}">Jquery Knob Charts</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarMaps" data-bs-toggle="collapse">
+            <i data-feather="map"></i>
+            <span> Maps </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarMaps">
+            <ul class="nav-second-level">
+              <li>
+                <a href="{% url 'components:components.maps.google'%}">Google Maps</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.maps.vector'%}">Vector Maps</a>
+              </li>
+              <li>
+                <a href="{% url 'components:components.maps.mapael'%}">Mapael Maps</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="#sidebarMultilevel" data-bs-toggle="collapse">
+            <i data-feather="share-2"></i>
+            <span> Multi Level </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <div class="collapse" id="sidebarMultilevel">
+            <ul class="nav-second-level">
+              <li>
+                <a href="#sidebarMultilevel2" data-bs-toggle="collapse">
+                  Second Level <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMultilevel2">
+                  <ul class="nav-second-level">
+                    <li>
+                      <a href="javascript: void(0);">Item 1</a>
+                    </li>
+                    <li>
+                      <a href="javascript: void(0);">Item 2</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a href="#sidebarMultilevel3" data-bs-toggle="collapse">
+                  Third Level <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMultilevel3">
+                  <ul class="nav-second-level">
+                    <li>
+                      <a href="javascript: void(0);">Item 1</a>
+                    </li>
+                    <li>
+                      <a href="#sidebarMultilevel4" data-bs-toggle="collapse">
+                        Item 2 <span class="menu-arrow"></span>
+                      </a>
+                      <div class="collapse" id="sidebarMultilevel4">
+                        <ul class="nav-second-level">
+                          <li>
+                            <a href="javascript: void(0);">Item 1</a>
+                          </li>
+                          <li>
+                            <a href="javascript: void(0);">Item 2</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- End Sidebar -->
+
+    <div class="clearfix"></div>
+  </div>
+  <!-- Sidebar -left -->
+</div>
+<!-- Left Sidebar End -->

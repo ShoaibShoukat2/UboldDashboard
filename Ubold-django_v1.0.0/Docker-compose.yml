@@ -1,0 +1,49 @@
+version: '3.9'
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome:3.141.59
+    container_name: chrome
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_DB: aiseoapp
+      POSTGRES_USER: aiseoapp
+      POSTGRES_PASSWORD: aiseoapp
+    ports:
+      - "5432:5432"
+
+  django:
+    build:
+      context: .
+    command: >
+      sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/aiseoapp
+    ports:
+      - "8000:8000"
+    depends_on:
+      - selenium-hub
+      - chrome
+      - postgres
+    environment:
+      - POSTGRES_DB=aiseoapp
+      - POSTGRES_USER=aiseoapp
+      - POSTGRES_PASSWORD=aiseoapp
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+    links:
+      - selenium-hub
+      - chrome
